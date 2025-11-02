@@ -1,0 +1,223 @@
+package uzusurvivor;
+
+import java.util.Scanner;
+
+public class Uzusurvivor {
+
+    public static void main(String[] args) {
+        String[] aldea = {"hoja", "arena", "nube", "roca", "niebla"};
+        int[] energia = {100, 80, 90, 60, 70};
+        String[] p = {"naruto", "gaara", "bee", "akatsuchi", "momochi"};
+        String[] e = {"sasuke", "itachi", "madara", "pain", "deidara"};
+
+        int energi = 100;
+        int personajeelegido = 0;
+        int agreg = 0;
+        int nivel = 0;
+
+        empieceeljuego(energi);
+        elecciondepersonaje(personajeelegido);
+        tuinventario();
+        agregarsuministro(agreg);
+        tresrondas(nivel);
+
+    }
+
+    public static String empieceeljuego(int energi) {
+        Scanner tec = new Scanner(System.in);
+
+        System.out.println("Que empiece el juego: ");
+
+        System.out.println("Elige la aldea: ");
+
+        System.out.println("aldea de la hoja");
+        System.out.println("aldea de la arena");
+        System.out.println("aldea de la nube");
+        System.out.println("aldea de la roca");
+        System.out.println("aldea de la niebla");
+        String aldea = tec.nextLine().toLowerCase();
+
+        switch (aldea) {
+
+            case "hoja":
+                aldea = "aldea de la Hoja";
+                System.out.println("Elegiste la Aldea de la Hoja");
+                energi = 100;
+                System.out.println("El consumo de energia es de: " + energi);
+
+                break;
+
+            case "arena":
+                aldea = "aldea de la Arena";
+                System.out.println("Elegiste la Aldea de la Arena");
+                energi -= 20;
+                System.out.println("El consumo de energia es de: " + energi);
+
+                break;
+
+            case "nube":
+                aldea = "aldea de la Nube";
+                System.out.println("Elegiste la Aldea de la Nube");
+                energi -= 10;
+                System.out.println("El consumo de energia es de: " + energi);
+                break;
+
+            case "roca":
+                aldea = "aldea de la Roca";
+                System.out.println("Elegiste la Aldea de la Roca");
+                energi -= 40;
+                System.out.println("El consumo de energia es de: " + energi);
+                break;
+
+            case "niebla":
+                aldea = "aldea de la Niebla";
+                System.out.println("Elegiste la Aldea de la Niebla");
+                energi -= 30;
+                System.out.println("El consumo de energia es de: " + energi);
+                break;
+
+            default:
+                System.out.println("Esta aldea no existe, elige otra vez");
+                break;
+
+        }
+        return aldea;
+    }
+
+    public static int elecciondepersonaje(int personajeelegido) {
+        Scanner tec = new Scanner(System.in);
+
+        System.out.println("Elige tu personaje: ");
+
+        System.out.println("1-> Naruto Uzumaki");
+        System.out.println("2-> Gaara");
+        System.out.println("3-> Killer Bee");
+        System.out.println("4-> Akatsuchi");
+        System.out.println("5-> Zabuza Momochi");
+
+        personajeelegido = tec.nextInt();
+
+        switch (personajeelegido) {
+
+            case 1:
+                System.out.println("Elegiste a Naruto Uzumaki");
+                personajeelegido = 1;
+                break;
+
+            case 2:
+                System.out.println("Elegiste a Gaara");
+                personajeelegido = 2;
+                break;
+
+            case 3:
+                System.out.println("Elegiste a Killer Bee");
+                personajeelegido = 3;
+                break;
+
+            case 4:
+                System.out.println("Elegiste a Akatsuchi");
+                personajeelegido = 4;
+                break;
+
+            case 5:
+                System.out.println("Elegiste a Zabuza Momochi");
+                personajeelegido = 5;
+                break;
+
+            default:
+                System.out.println("Este personaje no existe, elige otra vez");
+                break;
+        }
+        return personajeelegido;
+    }
+
+    public static void tuinventario() { // muestra lo que tenes en el inventario
+        String[] suministros = {"shuriken", "kunai", "sello explosivo", "ramen", "hierba medicinal", "agua"};
+        String[] inventario = new String[6]; // arreglo que recorre seis lugares
+
+        System.out.println("Tu inventario inicial es: ");
+        for (int i = 0; i < inventario.length; i++) {
+            System.out.println(" - " + suministros[i]);
+        }
+    }
+
+    public static int agregarsuministro(int agreg) {
+        Scanner tec = new Scanner(System.in);
+
+        do {
+            System.out.println(" --> QUE DESEA HACER: ");
+
+            System.out.println(" 1 ->Agregar suministro: ");
+            System.out.println(" 2 ->Eliminar suministro");
+            System.out.println(" 3 ->Salir");
+            agreg = tec.nextInt();
+            tec.nextLine(); //salto de línea
+
+            if (agreg == 1) {
+                System.out.println("Ingrese el suministro: ");
+                String nuevo = tec.nextLine();
+                System.out.println("Suministro agregado: " + nuevo); //muestra suministro agregado
+
+            } else if (agreg == 2) {
+                System.out.println("Elimine suministro: ");
+                String borrar = tec.nextLine();
+                System.out.println("Suministro eliminado: " + borrar); // muestra suministro eliminado
+
+            } else if (agreg == 3) {
+                System.out.println("Salir del inventario");
+            } else {
+                System.out.println("----siga participando----");
+            }
+        } while (agreg != 3);
+        return agreg;
+    }
+
+    public static int tresrondas(int nivel) {
+        Scanner tec = new Scanner(System.in);
+        boolean victoria = false;
+
+        for (int i = 1; i <= 3; i++) {
+
+            System.out.println("Ronda" + nivel + ":");
+            System.out.println("Elige el nivel: ");
+
+            System.out.println(" 1 -> Principiante");
+            System.out.println(" 2 -> Intermedio");
+            System.out.println(" 3 -> Avanzado");
+            int ronda = tec.nextInt();
+
+            switch (ronda) {
+                case 1:
+                    nivel -= 20;
+                    System.out.println("Ronda para Principiante:" + nivel);
+                    break;
+
+                case 2:
+                    nivel -= 40;
+                    System.out.println("Ronda para Intermedio:" + nivel);
+                    break;
+
+                case 3:
+                    nivel -= 60;
+                    System.out.println("Ronda para Avanzado:" + nivel);
+                    break;
+
+                default:
+                    nivel -= 10;
+                    System.out.println("Ya no hay posibilidades de rondas, pierdes 10 de energia");
+            }
+
+            if (nivel <= 0) {
+                victoria = false;
+                System.out.println("Derrota no tienes energia " + nivel);
+            } else if (nivel > 80) {
+                victoria = true;
+                System.out.println("Has logrado la Victoria");
+            } else {
+                System.out.println("Intenta de nuevo");
+            }
+        }
+        return nivel;
+    }
+
+}
